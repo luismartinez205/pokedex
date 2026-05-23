@@ -1,0 +1,14 @@
+{
+    "frutas": [
+        {
+            "id": 1,
+            "nombre": "nance",
+            "color": "amarillo"
+        },
+        {
+            "id": 2,
+            "nombre": "marayon",
+            "color": "naranja"
+        }
+    ]
+}
