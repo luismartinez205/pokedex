@@ -95,6 +95,27 @@ async function loadPokemons() {
 
 
 // MOSTRAR POKEMONS
+// Archivo de audio nuevo dentro de la carpeta `sounds`
+const hover = new Audio("./sounds/666herohero-click-21156.mp3");
+hover.preload = 'auto';
+
+// Usar delegación en el contenedor principal (`#root`) porque
+// los elementos con clase `.games` se crean dinámicamente.
+main.addEventListener("pointerover", (ev) => {
+  const poster = ev.target.closest(".poster");
+
+  // Si el puntero no está sobre una imagen .poster
+  if (!poster) return;
+
+  // Evita que se reproduzca varias veces al moverse dentro del mismo elemento
+  if (poster.contains(ev.relatedTarget)) return;
+
+  hover.currentTime = -1;
+  hover.play().catch(() => {
+    // Ignorar errores de reproducción (ej. bloqueo de autoplay)
+  });
+});
+
 function showPokemons(pokemons) {
 
   main.innerHTML = '';
@@ -106,9 +127,10 @@ function showPokemons(pokemons) {
     card.classList.add('card');
 
     card.innerHTML = `
+    <div class="games">
       <h2>${pokeData.name}</h2>
 
-      <img src="${pokeData.sprites.front_default}">
+      <img src="${pokeData.sprites.front_default}" class="poster">
 
       <p style="font-weight:700">
         #00${pokeData.id}
@@ -133,6 +155,7 @@ function showPokemons(pokemons) {
           </li>
         `).join('')}
       </ul>
+      </div>
     `;
 
 
@@ -293,4 +316,11 @@ searchInput.addEventListener("input", () => {
   showPokemons(filtered);
 
 });
+
+ 
+        window.addEventListener("load", () => {
+  const audio = new Audio("./sounds/https___voicebot.su_es_sound_el-pokemon-principal-esta-listo-para-la-batalla_.mp3");
+  audio.play();
+});
+   
 
