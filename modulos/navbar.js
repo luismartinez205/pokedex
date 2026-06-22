@@ -18,7 +18,7 @@ class Navbar extends HTMLElement{
         <form action="">
             <input type="search" name="buscador" id="buscador" placeholder="Id, nombre o habilidad" autocomplete="off">
         </form>
-        <ul style="gap: 40px;">
+        <ul class="list-form">
             <li><a href="index.html" class="nav-link">Inicio</a></li>
             <li><a href="" class="nav-link">Nosotros</a></li>
             <li class="submenu"><a href="" class="nav-link">Ver</a><span><img src="arrow.svg" alt=""
